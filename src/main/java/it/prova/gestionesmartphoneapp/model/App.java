@@ -1,6 +1,7 @@
 package it.prova.gestionesmartphoneapp.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table (name="app")
@@ -29,6 +33,14 @@ public class App {
 	private LocalDate dataUltimoAggiornamento;
 	@Column (name="versione")
 	private Integer versione;
+	
+	// campi per le time info del record
+		@CreationTimestamp
+		@Column(name = "createdatetime")
+		private LocalDateTime createDateTime;
+		@UpdateTimestamp
+		@Column(name = "updatedatetime")
+		private LocalDateTime updateDateTime;
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "apps")
 	private Set<Smartphone> smartphones= new HashSet<Smartphone>();
@@ -93,11 +105,34 @@ public class App {
 		this.smartphones = smartphones;
 	}
 
+	
+	
+	public LocalDateTime getCreateDateTime() {
+		return createDateTime;
+	}
+
+	public void setCreateDateTime(LocalDateTime createDateTime) {
+		this.createDateTime = createDateTime;
+	}
+
+	public LocalDateTime getUpdateDateTime() {
+		return updateDateTime;
+	}
+
+	public void setUpdateDateTime(LocalDateTime updateDateTime) {
+		this.updateDateTime = updateDateTime;
+	}
+
 	@Override
 	public String toString() {
 		return "App [id=" + id + ", nome=" + nome + ", dataInstallazione=" + dataInstallazione
-				+ ", dataUltimoAggiornamento=" + dataUltimoAggiornamento + ", versione=" + versione + "]";
+				+ ", dataUltimoAggiornamento=" + dataUltimoAggiornamento + ", versione=" + versione
+				+ ", createDateTime=" + createDateTime + ", updateDateTime=" + updateDateTime + "]";
 	}
+
+	
+
+
 	
 	
 	

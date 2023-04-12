@@ -16,6 +16,11 @@ public interface AppService {
 
 	public void rimuovi(Long idApp) throws Exception;
 	
+	public App cercaPerNome (String nome) throws Exception;
+	public void aggiornaVersioneAppEDataDiAggiornamento(Long idApp) throws Exception;
+
+
+	
 	// per injection
 		public void setAppDAO(AppDAO appDAO);
 

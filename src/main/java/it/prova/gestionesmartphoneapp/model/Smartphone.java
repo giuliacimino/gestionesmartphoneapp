@@ -38,7 +38,7 @@ public class Smartphone {
 	private int prezzo;
 	
 	@Column (name="versioneOS")
-	private String versioneOS;
+	private Integer versioneOS;
 	
 	// campi per le time info del record
 		@CreationTimestamp
@@ -56,7 +56,7 @@ public class Smartphone {
 		
 	}
 	
-	public Smartphone(String marca, String modello, int prezzo, String versioneOS) {
+	public Smartphone(String marca, String modello, int prezzo, Integer versioneOS) {
 		this.marca=marca;
 		this.modello=modello;
 		this.prezzo=prezzo;
@@ -95,11 +95,11 @@ public class Smartphone {
 		this.prezzo = prezzo;
 	}
 
-	public String getVersioneOS() {
+	public Integer getVersioneOS() {
 		return versioneOS;
 	}
 
-	public void setVersioneOS(String versioneOS) {
+	public void setVersioneOS(Integer versioneOS) {
 		this.versioneOS = versioneOS;
 	}
 
